@@ -12,10 +12,14 @@ public class BinaryToString_5_2 {
 
 	public static void main(String[] args) {
 		// create test case
-		double num = 0.101;
+		double num = 0.8625;
+
+		// compute result
+		String result = printBinary(num);
+		System.out.println("result is: " + result);
 	}
 
-	public String printBinary(double num) {
+	public static String printBinary(double num) {
 		if (num >= 1 || num <= 0) {
 			return "ERROR";
 		}
@@ -33,7 +37,33 @@ public class BinaryToString_5_2 {
 				binaryString = binaryString + "0";
 				num = r;
 			}
+
+			System.out.println(binaryString);
 		} // End while loop
+		return binaryString;
+	}
+
+	public static String printBinary2(double num) {
+		if (num >= 1 || num <= 0) {
+			return "ERROR";
+		}
+
+		String binaryString = ".";
+		double frac = 0.5;
+
+		while (num > 0) {
+			/* Setting a limit on length: 32 characters */
+			if (binaryString.length() > 32) {
+				return "ERROR";
+			}
+			if (num >= frac) {
+				binaryString += "1";
+				num -= frac;
+			} else {
+				binaryString += "0";
+			}
+			frac /= 2;
+		}
 		return binaryString;
 	}
 }

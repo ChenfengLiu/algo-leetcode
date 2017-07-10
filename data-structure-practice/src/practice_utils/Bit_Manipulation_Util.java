@@ -23,10 +23,14 @@ public class Bit_Manipulation_Util {
 		int mask = (-1 << (i + 1));
 		return num & mask;
 	}
-	
-	public int updateBit(int num, int i, boolean bitIs1){
+
+	public int updateBit(int num, int i, boolean bitIs1) {
 		int value = bitIs1 ? 1 : 0;
 		int mask = ~(1 << i);
 		return (num & mask) | (value << i);
+	}
+
+	public int ClearLastBit(int num) {
+		return num & (num - 1);
 	}
 }
