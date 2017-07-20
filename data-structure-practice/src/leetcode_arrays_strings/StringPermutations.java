@@ -29,15 +29,24 @@ public class StringPermutations {
 
 	public static void main(String[] args) {
 		// create test case
-		String word = "aab";
-		String rule_char_set = "c";
+		String word = "asdfklhlakhsdflkajhsfdwetrbvsiuqwef";
+		String rule_char_set = "fafqw";
 
 		// compute result
+
+		long startTime = System.nanoTime();
+
 		findStringPermutations(word, rule_char_set);
+		long endTime = System.nanoTime();
+
+		long duration = (endTime - startTime);
+		System.out.println(duration);
 
 	}
 
 	public static void findStringPermutations(String n, String m) {
+		
+		
 		map = new HashMap<Character, Integer>();
 		for (int i = 0; i < m.length(); i++)
 			map.put(m.charAt(i), i);
@@ -49,11 +58,11 @@ public class StringPermutations {
 		int n = str.length();
 		System.out.println(result);
 		for (int i = index; i < index + n; i++) {
-			if (map.containsKey(str.charAt(i-index))) {
+			if (map.containsKey(str.charAt(i - index))) {
 				permutation(result.substring(0, i) + toggleChar(result.charAt(i))
 						+ result.substring(i + 1, result.length()), str.substring(i - index + 1, n), i + 1);
-			}//End if
-		}//End for loop
+			} // End if
+		} // End for loop
 	}
 
 	private static char toggleChar(char a) {
